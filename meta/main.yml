@@ -1,0 +1,19 @@
+---
+galaxy_info:
+  author: "Aniket Anerao"
+  description: "Installation & configuration of httpd (Apache), PHP, Mariadb and PhpMyAdmin for Centos 6 (minimal)"
+  company: "InfoWorld"
+  license: "license (GNU General Public License v3.0)"
+  min_ansible_version: 1.8
+  platforms:
+    - name: EL
+      versions:
+        - 6
+        - 7
+    - name: Centos
+      versions:
+        - trusty
+  categories:
+    - database:sql
+
+dependencies: []

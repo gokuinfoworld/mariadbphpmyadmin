@@ -1,0 +1,33 @@
+---
+- name: Install libselinux-python
+  yum: name=libselinux-python state=present
+
+- name: Add repo file
+  template: src=mariadb_centos.repo.j2 dest=/etc/yum.repos.d/mariadb.repo owner=root group=root mode=0644
+
+- name: Install MariaDB
+  yum: name={{ item }} enablerepo=mariadb state=present
+  with_items:
+    - MariaDB-server
+    - MariaDB-client
+
+- name: Install MySQLdb Python package for secure installations.
+  yum: name=MySQL-python state=present
+  when: mysql_secure_installation and mysql_root_password is defined
+  
+- name: Install epel-release package
+  yum: name=epel-release state=present
+
+- name: Install phpMyAdmin
+  yum: name=phpmyadmin state=present
+
+- name: Install Apache webserver
+  yum: name=httpd state=present
+
+- name: Install PHP
+  yum: name=php state=present
+  
+- name: Install w3m for testing phpmyadmin
+  yum: name=w3m state=present
+
+  
